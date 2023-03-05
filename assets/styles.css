@@ -1,12 +1,65 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+/* Normal mode: */
+    --backGround:#F7F7F8;
+    --primaryColor:#E94959;
+    --secondaryColor:#E6E6E6;
+    --tertiaryColor:#FFFFFF;
+    --butomsColor:#2B2B2B;
+
+/*Dark Mode: */
+    --backGroundDark:#1F1D2A;
+    --primaryColorDark:#9ADDE0;
+    --secondaryColorDark:#0B0B0F;
+    --tertiaryColorDark:#1B1A23;  
+    --butomsColorDark:#1B1A23;
+
+/*Common*/
+    --fontColor: #8C8C8C;
 }
 
-.logo{
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: Roboto;
+}
 
-    width: 5rem;
+body {
+    color: var(--color-f);
+    background-color: var(--backGround);
+}
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo {
+    width: 2.5rem; 
+}
+
+.anchorLogo {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+    margin: 1.5rem;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem;
+}
+
+.menuNavBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
