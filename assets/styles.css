@@ -208,8 +208,8 @@ p {
 
 .autor {
     background-color: var(--primaryColor);
-    width: 85%;
-    height: 70px;
+    width: 95%;
+    height: 55px;
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -220,23 +220,11 @@ p {
     color:#FFFFFF;
     padding: 0.5rem;
     text-align: center;
+    font-size: 12px;
 }
 
 .autor strong {
     color:var(--tertiaryColorDark);
     font-weight: bold;
+    font-size: 12px;
 }
-
-
-
-/*
-.infoProduct {
-    position:relative;
-    top:-200px;
-    left:-40px;
-}
-
-    .card:nth-child(even) {
-        flex-direction: row-reverse;
-    }
-*/
