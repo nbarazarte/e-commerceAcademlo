@@ -181,12 +181,24 @@ p {
 }
 
 .cardsProducts {
-    /* background-color: #9ADDE0; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 800px;
+    align-items: center; 
+}
+
+.cardGrid{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
+    padding: 1rem; 
+    gap: 0.5rem;
+    
 }
 
 .cardProd {
@@ -220,7 +232,6 @@ p {
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    /* background-color: red; */
     width: 100%;
     height: 35px;
 }
