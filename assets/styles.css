@@ -335,13 +335,12 @@ p {
     
     .infoProduct {
         position:relative;
-        top:0px;
         margin: 1.5rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         position: relative;
-        top: -460px;
+        top: -20rem;
     }
     
     .titles {
