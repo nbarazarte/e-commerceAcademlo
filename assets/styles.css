@@ -360,6 +360,13 @@ p {
         width: 414px;
     }
     
+    .description p{
+        font-weight:600;
+        font-size: 15px;
+        color: var(--butomsColor);       
+        width: 100%;
+    }
+
     .pageFooter {
         background-color: var(--secondaryColor);
     }
