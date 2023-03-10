@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/styles.css">
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js" defer></script>
-    <script src="./mixitup-v3/patrickkunka-mixitup-61dac05/dist/mixitup.min.js" defer></script>
-    <script src="./assets/main.js" defer></script>
-
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
-</body>
-</html>
-
+    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/filter.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js" defer></script>
+    <script src="./assets/main.js" defer></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'defer></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mixitup/2.1.11/jquery.mixitup.js'defer></script>
+    <script  src="./assets/main.js" defer></script>
     <title>Academlo Store</title>
 </head>
 <body>
@@ -82,99 +81,110 @@
             </div>
 
         </section>
-
+        <div class="controls">
+            <label>Filter:</label>
+            <button class="filter" data-filter="all">All</button>
+            <button class="filter" data-filter=".category-1">Category 1</button>
+            <button class="filter" data-filter=".category-2">Category 2</button>
+            
+            <label>Sort:</label>
+            <button class="sort" data-sort="myorder:asc">Asc</button>
+            <button class="sort" data-sort="myorder:desc">Desc</button>
+          </div>
         <section id="products" class="cardsProducts">
 
         <div class="cardGrid">
 
-        
-            <div class="cardProd">
+            <div id="Container" class="container">
+                <div class="cardProd mix category-1" data-myorder="1">
 
-                <div class="imgProducts">
-                    <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="">
-                </div>
-
-                <div class="detailProducts">
-                    <div class="priceStock">
-                        <span class="productPrice">$10.00</span>
-                        <span class="stock">Stock: 5</span>
-                        <span class="addToCart">
-                            <box-icon name='plus'></box-icon>
-                        </span>
+                    <div class="imgProducts">
+                        <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="">
                     </div>
 
-                    <div class="description">
-                        <p> Camiseta de manga corta con cuello redondo</p>
-                    </div>
-                </div>
+                    <div class="detailProducts">
+                        <div class="priceStock">
+                            <span class="productPrice">$10.00</span>
+                            <span class="stock">Stock: 5</span>
+                            <span class="addToCart">
+                                <box-icon name='plus'></box-icon>
+                            </span>
+                        </div>
 
-            </div>          
-
-             <div class="cardProd">
-
-                <div class="imgProducts">
-                    <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="">
-                </div>
-
-                <div class="detailProducts">
-                    <div class="priceStock">
-                        <span class="productPrice">$10.00</span>
-                        <span class="stock">Stock: 5</span>
-                        <span class="addToCart">
-                            <box-icon name='plus'></box-icon>
-                        </span>
+                        <div class="description">
+                            <p> Camiseta de manga corta con cuello redondo</p>
+                        </div>
                     </div>
 
-                    <div class="description">
-                        <p> Camiseta de manga corta con cuello redondo</p>
-                    </div>
-                </div>
+                </div>          
 
-            </div>  
+                <div class="cardProd mix category-1" data-myorder="2"">
 
-            <div class="cardProd">
-
-                <div class="imgProducts">
-                    <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="">
-                </div>
-
-                <div class="detailProducts">
-                    <div class="priceStock">
-                        <span class="productPrice">$10.00</span>
-                        <span class="stock">Stock: 5</span>
-                        <span class="addToCart">
-                            <box-icon name='plus'></box-icon>
-                        </span>
+                    <div class="imgProducts">
+                        <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="">
                     </div>
 
-                    <div class="description">
-                        <p> Camiseta de manga corta con cuello redondo</p>
-                    </div>
-                </div>
+                    <div class="detailProducts">
+                        <div class="priceStock">
+                            <span class="productPrice">$10.00</span>
+                            <span class="stock">Stock: 5</span>
+                            <span class="addToCart">
+                                <box-icon name='plus'></box-icon>
+                            </span>
+                        </div>
 
-            </div>          
-
-            <div class="cardProd">
-
-                <div class="imgProducts">
-                    <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="">
-                </div>
-
-                <div class="detailProducts">
-                    <div class="priceStock">
-                        <span class="productPrice">$10.00</span>
-                        <span class="stock">Stock: 5</span>
-                        <span class="addToCart">
-                            <box-icon name='plus'></box-icon>
-                        </span>
+                        <div class="description">
+                            <p> Camiseta de manga corta con cuello redondo</p>
+                        </div>
                     </div>
 
-                    <div class="description">
-                        <p> Camiseta de manga corta con cuello redondo</p>
-                    </div>
-                </div>
+                </div>  
 
-            </div>   
+                <div class="cardProd mix category-1" data-myorder="3"">
+
+                    <div class="imgProducts">
+                        <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="">
+                    </div>
+
+                    <div class="detailProducts">
+                        <div class="priceStock">
+                            <span class="productPrice">$10.00</span>
+                            <span class="stock">Stock: 5</span>
+                            <span class="addToCart">
+                                <box-icon name='plus'></box-icon>
+                            </span>
+                        </div>
+
+                        <div class="description">
+                            <p> Camiseta de manga corta con cuello redondo</p>
+                        </div>
+                    </div>
+
+                </div>          
+
+                <div class="cardProd mix category-2" data-myorder="4"">
+
+                    <div class="imgProducts">
+                        <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="">
+                    </div>
+
+                    <div class="detailProducts">
+                        <div class="priceStock">
+                            <span class="productPrice">$10.00</span>
+                            <span class="stock">Stock: 5</span>
+                            <span class="addToCart">
+                                <box-icon name='plus'></box-icon>
+                            </span>
+                        </div>
+
+                        <div class="description">
+                            <p> Camiseta de manga corta con cuello redondo</p>
+                        </div>
+                    </div>
+
+                </div> 
+            </div>
+            
         </div>
         </section>
     

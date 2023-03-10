@@ -22,10 +22,11 @@
     --fontColorTitles: #262626;
     --height-h:55px;
     --fontSize:16px;
-    --heightMediaBig:700px; /*525*/
+    --heightMediaBig:700px; /*525 700*/
     --widthBig:258px;
     --heightMediaSmall:400px;
     --widthSmall:160px;
+    --cardSize: 250px;
 }
 
 * {
@@ -214,7 +215,7 @@ p {
 
 .imgProducts {
     background-color: var(--secondaryColor);
-    width: 300px;  
+    width: var(--cardSize);  
     border-radius: 15px 15px 0px 0px;
 }
 
@@ -225,7 +226,7 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px; 
+    width: var(--cardSize);
     border-radius: 0px 0px 15px 15px;
 }
 
@@ -265,7 +266,7 @@ p {
     height: 45px;
     position: relative;
     bottom: 45px;
-    left: 70px;
+    left: 20px;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important
 }
 
@@ -317,17 +318,17 @@ p {
     font-size: 12px;
 }
 
-/*  #home {
-    background-color: red;
-   
-}  */
-
 @media (min-width: 700px) {
 
     #home {
-       /*  background-color: blue; */
-      /*  height: 900px; */
-    } 
+        height: 940px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+    }
 
     .banner{
         display: flex;
@@ -355,7 +356,8 @@ p {
         flex-direction: column;
         gap: 1rem;
         position: relative;
-        top: -34rem;
+        top: -34rem;/*34*/
+        gap: 1rem;
     }
     
     .titles {

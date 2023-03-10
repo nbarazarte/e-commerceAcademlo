@@ -1,0 +1,17 @@
+.controls{
+  color: #eee;
+}
+
+button{
+  background: #666;
+  color: #ddd;
+  cursor: pointer;
+}
+
+button.active{
+  background: #68b8c4;
+}
+
+.container .mix{
+  display: none;
+}
