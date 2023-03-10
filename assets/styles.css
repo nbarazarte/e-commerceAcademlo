@@ -324,6 +324,63 @@ p {
     font-size: 12px;
 }
 
+.controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+  
+  button {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 700;
+    color: gray
+  }
+  
+  button span{
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 10px;
+  }
+  
+  button.active{  
+    background-color: var(--butomsColor);
+    color: var(--tertiaryColor);
+    width: 80px;
+    height: 50px;
+    letter-spacing: 1px;
+    border-width: 0;
+  }
+  
+  button.active span{  
+    background-color: var(--butomsColor);
+    color: var(--tertiaryColor);
+    letter-spacing: 1px;
+    border-width: 0;
+    font-size: 10px;
+  }
+
+  .container .mix{
+    display: none;
+  }
+
+  .iconSort {
+    fill: gray;
+    cursor: pointer;
+  }
+
+  .iconSort.active {
+    fill: #000000;
+    cursor: pointer;
+  }  
+
+
+/*** MEDIA QUERY **/
+
 @media (min-width: 700px) {
 
     #home {
@@ -336,15 +393,12 @@ p {
     }
 
     .cardGrid{
-
         display: flex;
         justify-content: center;
         align-items: center; 
-        
         width: 87%;
         display: grid;
         grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
-        
     }
 
     .banner{
@@ -435,4 +489,49 @@ p {
         font-size: 16px;
     } 
 
+    .controls{
+        display: flex;
+        flex-direction: row;  
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+    }
+
+    button {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 700;
+    color: gray
+    }
+
+    button span{
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 12px;
+    }
+
+    button.active{  
+    background-color: var(--butomsColor);
+    color: var(--tertiaryColor);
+    width: 140px;
+    height: 50px;
+    letter-spacing: 1px;
+    border-width: 0;
+    }
+
+    button.active span{  
+    background-color: var(--butomsColor);
+    color: var(--tertiaryColor);
+    width: 140px;
+    height: 50px;
+    letter-spacing: 1px;
+    border-width: 0;
+    font-size: 12px;
+    }
+
+    .container .mix{
+    display: none;
+    }
 }
