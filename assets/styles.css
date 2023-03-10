@@ -186,11 +186,17 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
+    /* background-color: green; */
+}
+
+.centerGrid{
+    margin:auto;
+    text-align:center;
+    
 }
 
 .cardGrid{
-    
-   
+/* background-color: yellow; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -324,10 +330,21 @@ p {
         height: 940px;
     }
 
-    .container {
+    .centerGrid{
+        margin:auto;
+        text-align:start;
+    }
+
+    .cardGrid{
+
         display: flex;
         justify-content: center;
-        align-items: center;  
+        align-items: center; 
+        
+        width: 87%;
+        display: grid;
+        grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
+        
     }
 
     .banner{
