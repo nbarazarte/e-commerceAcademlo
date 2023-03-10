@@ -181,7 +181,6 @@ p {
 }
 
 .cardsProducts {
-   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -190,7 +189,7 @@ p {
 
 .cardGrid{
     
-    
+   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -318,11 +317,17 @@ p {
     font-size: 12px;
 }
 
- #home {
-    background-color: transparent;
-} 
+/*  #home {
+    background-color: red;
+   
+}  */
 
 @media (min-width: 700px) {
+
+    #home {
+       /*  background-color: blue; */
+       height: 550px;
+    } 
 
     .banner{
         display: flex;
