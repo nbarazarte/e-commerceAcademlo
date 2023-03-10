@@ -181,6 +181,7 @@ p {
 }
 
 .cardsProducts {
+   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -188,6 +189,8 @@ p {
 }
 
 .cardGrid{
+    
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -320,10 +323,6 @@ p {
 } 
 
 @media (min-width: 700px) {
-
-    #home {        
-        height: 79vh;
-    }
 
     .banner{
         display: flex;
