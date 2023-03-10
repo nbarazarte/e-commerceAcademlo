@@ -22,7 +22,7 @@
     --fontColorTitles: #262626;
     --height-h:55px;
     --fontSize:16px;
-    --heightMediaBig:525px; /*525*/
+    --heightMediaBig:700px; /*525*/
     --widthBig:258px;
     --heightMediaSmall:400px;
     --widthSmall:160px;
@@ -326,7 +326,7 @@ p {
 
     #home {
        /*  background-color: blue; */
-       height: 600px;
+      /*  height: 900px; */
     } 
 
     .banner{
@@ -355,7 +355,7 @@ p {
         flex-direction: column;
         gap: 1rem;
         position: relative;
-        top: -20rem;
+        top: -34rem;
     }
     
     .titles {
