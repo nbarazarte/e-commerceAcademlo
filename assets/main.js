@@ -45,49 +45,41 @@ async function getProducts(){
 
 function printProducts(db){
 
-  const productsHTML = document.querySelector('.products');
+  const productsHTML = document.querySelector('.container');
 
   let html = '';
-
-  count = 0;
+  let count = 0;
 
   for (const product of db.products) {
-      console.log(product);
+      //console.log(product);
 
       html += `<div class="cardProd mix ${product.category}" data-myorder="${count}">
-
-      <div class="imgProducts">
-          <img src="${product.image}" alt="">
-      </div>
-
-      <div class="detailProducts">
-          <div class="priceStock">
-              <span class="productPrice">$${product.price}</span>
-              <span class="stock">Stock: ${product.quantity}</span>
-              <span class="addToCart">
-                  <box-icon name='plus'></box-icon>
-              </span>
-          </div>
-
-          <div class="description">
-              <p> ${product.name}</p>
-          </div>
-      </div>
-
-  </div>`;
+                <div class="imgProducts">
+                    <img src="${product.image}" alt="">
+                </div>
+                <div class="detailProducts">
+                    <div class="priceStock">
+                        <span class="productPrice">$${product.price}</span>
+                        <span class="stock">Stock: ${product.quantity}</span>
+                        <span class="addToCart">
+                            <box-icon name='plus' id='${product.id}'></box-icon>
+                        </span>
+                    </div>
+                    <div class="description">
+                        <p> ${product.name}</p>
+                    </div>
+                </div>
+            </div>`;
     count++
   }
   //console.log(html);
   //console.log(productsHTML);
-
   productsHTML.innerHTML = html;
-
 }
 
 (async () => {
 
   const res = JSON.parse(window.localStorage.getItem('products')) || await getProducts();
-
    //console.log(res, 'esto viene del local storage');
 
   const db = {
