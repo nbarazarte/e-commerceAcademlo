@@ -472,14 +472,12 @@ button.active span{
     }
     
     .infoFooter {
-        
-       
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: start;   
         padding: 3rem 8rem 0 8rem;     
-        gap: 12rem;
+        gap: 6rem;
     }
     
     .autor {
