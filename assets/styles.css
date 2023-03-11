@@ -321,6 +321,10 @@ p {
 .autor {
     background-color: var(--primaryColor);
     height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .autor p {
@@ -328,6 +332,7 @@ p {
     padding: 0.5rem;
     text-align: center;
     font-size: 12px;
+    gap: 0.5rem;
 }
 
 .autor strong {
@@ -493,13 +498,14 @@ button.active span{
         color:#FFFFFF;
         padding: 0.5rem;
         text-align: center;
-        font-size: 16px;
+        font-size: 12px;
+        gap: 0.5rem;
     }
     
     .autor strong {
         color: #FFFFFF;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 12px;
     } 
 
     .controls{
