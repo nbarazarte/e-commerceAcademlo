@@ -277,6 +277,17 @@ p {
     cursor: pointer;
 }
 
+.addToCart:hover{
+    background-color: #E94959;
+    transition: 0.5s;
+}
+
+.addToCart:hover box-icon{
+   
+    fill:#FFFFFF;
+    transition: 0.5s;
+}
+
 .pageFooter {
     background-color: var(--secondaryColor);
     padding: 1rem 1rem 4rem 1rem;
@@ -326,45 +337,45 @@ p {
 }
 
 .controls{
+    /* background-color: #E94959; */
+    padding: 1rem;
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; 
     width: 100%;
-  }
-  
-  button {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+}
+
+button {
     border: 0;
     background: transparent;
     cursor: pointer;
     font-weight: 700;
     color: gray
-  }
-  
-  button span{
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    font-size: 10px;
-  }
-  
-  button.active{  
-    background-color: var(--butomsColor);
-    color: var(--tertiaryColor);
-    width: 80px;
-    height: 50px;
-    letter-spacing: 1px;
-    border-width: 0;
-  }
-  
-  button.active span{  
-    background-color: var(--butomsColor);
-    color: var(--tertiaryColor);
-    letter-spacing: 1px;
-    border-width: 0;
-    font-size: 10px;
-  }
+}
 
+button:hover {
+    color: var(--primaryColor);
+}
+
+button.active{  
+    background-color: var(--butomsColor);
+    color: var(--tertiaryColor);
+    padding: 0.5rem;
+    letter-spacing: 1px;
+    border-width: 0;
+}
+
+button.active span{  
+    background-color: var(--butomsColor);
+    color: var(--tertiaryColor);
+    letter-spacing: 1px;
+    border-width: 0;
+    font-size: 12px;
+} 
+  
   .container .mix{
     display: none;
   }
@@ -375,8 +386,9 @@ p {
   }
 
   .iconSort.active {
-    fill: #000000;
-    cursor: pointer;
+    fill: var(--primaryColor);
+    background-color: transparent;
+
   }  
 
 
@@ -499,40 +511,44 @@ p {
     }
 
     button {
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    font-weight: 700;
-    color: gray
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        font-weight: 700;
+        color: gray
     }
-
-    button span{
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    font-size: 12px;
+    
+    button:hover {
+        color: var(--primaryColor);
     }
 
     button.active{  
-    background-color: var(--butomsColor);
-    color: var(--tertiaryColor);
-    width: 140px;
-    height: 50px;
-    letter-spacing: 1px;
-    border-width: 0;
+        background-color: var(--butomsColor);
+        color: var(--tertiaryColor);
+        padding: 0.5rem;
+        letter-spacing: 1px;
+        border-width: 0;
     }
-
+    
     button.active span{  
-    background-color: var(--butomsColor);
-    color: var(--tertiaryColor);
-    width: 140px;
-    height: 50px;
-    letter-spacing: 1px;
-    border-width: 0;
-    font-size: 12px;
-    }
+        background-color: var(--butomsColor);
+        color: var(--tertiaryColor);
+        letter-spacing: 1px;
+        border-width: 0;
+        font-size: 12px;
+    } 
 
     .container .mix{
     display: none;
     }
+
+    .iconSort {
+        fill: gray;
+        cursor: pointer;
+      }
+    
+      .iconSort.active {
+        fill: var(--primaryColor);
+        background-color: transparent;
+      }  
 }
