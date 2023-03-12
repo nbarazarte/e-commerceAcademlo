@@ -37,11 +37,13 @@
    font-weight:normal;
    font-size: var(--fontSize);
    color: var(--fontColorTitles);
+   scroll-behavior: smooth;
 }
 
 body {
     color: var(--color-f);
     background-color: var(--backGround);
+    
 }
 
 img{
@@ -60,11 +62,6 @@ a {
     margin: 0 auto;
 }
 
-.logo svg{
-    width: 2.5rem; 
-    fill: var(--primaryColor)
-}
-
 .header {
     background-color: #FFFFFF;
     position: fixed;
@@ -77,28 +74,52 @@ a {
 
 .menuNavBar {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    height: var(--height-h)
+    height: var(--height-h);
+    /* background-color: blue; */
 }
 
 .logo_menu  {
+    /* background-color: yellow; */
     list-style: none;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: start;
     align-items: center;
+    width: 50%;
+    height: 70px;
 }
 
-.logo_menu a {
-    list-style: none;
+.logo a{
+   /*  background-color: green; */
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-weight: bold;
 }
 
-.menu {
-    display: none;
+.logo svg{
+    width: 2.5rem; 
+    fill: var(--primaryColor);
+}
+
+.menu ul{
+    /* background-color: red; */
+    width: 100%;
+    display: inline;
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    list-style-type: none;
+    visibility: hidden;
+}
+
+.menuMobile {
+    visibility:visible;
 }
 
 .iconsMenus {
@@ -565,6 +586,31 @@ info__amount */
     #home {
         height: 940px;
     }
+
+    .menu ul {
+        /* background-color: red; */
+        width: 100%;
+        display: inline;
+        display: flex;
+        justify-content:left;
+        align-items: center;
+        list-style-type: none;
+        visibility: visible;
+        gap: 1rem;
+    }
+
+    .menuMobile {
+        visibility: hidden;
+    }
+
+    .menu ul a{
+        font-weight: bold;
+        color: var(--fontColorFooter)
+    }
+
+    .menu ul a:hover{
+        color: var(--primaryColor)
+    }    
 
     .centerGrid{
         margin:auto;
