@@ -125,6 +125,7 @@ function addToCartFromProducts(db){
       window.localStorage.setItem('cart', JSON.stringify(db.cart));
 
       printProductsInCart(db);
+      printTotals(db);
     }
 
   });
@@ -212,9 +213,28 @@ function handlerProductsInCart(db){
 
     window.localStorage.setItem('cart', JSON.stringify(db.cart));
     printProductsInCart(db);
-
+    printTotals(db);
   });
+}
 
+function printTotals(db) {
+
+  const info__totalHTML = document.querySelector('.info__total');
+  const info__amountHTML = document.querySelector('.info__amount');
+
+  let totalPrice = 0;
+  let amounProducts = 0;
+
+  for (const product in db.cart) {
+    const {amount, price } = db.cart[product];
+    totalPrice += price * amount;
+    amounProducts += amount;
+  }
+
+  info__totalHTML.textContent = '$'+totalPrice;
+  info__amountHTML.textContent = amounProducts + ' units';
+
+  //console.log({amounProducts, totalPrice});  
 }
 
 (async () => {
@@ -227,11 +247,12 @@ function handlerProductsInCart(db){
     cart: JSON.parse(window.localStorage.getItem('cart')) || {},
   }
 
+   //console.log(db.products);
   printProducts(db);
-  //console.log(db.products);
   handlerShowCart();
   addToCartFromProducts(db);
   printProductsInCart(db);
   handlerProductsInCart(db);
+  printTotals(db);
 
 })();
