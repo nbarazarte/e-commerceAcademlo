@@ -62,7 +62,7 @@ function printProducts(db){
                         <span class="productPrice">$${product.price}</span>
                         <span class="stock">Stock: ${product.quantity}</span>
                         <span class="addToCart">
-                            <box-icon name='plus' id='${product.id}'></box-icon>
+                            <box-icon name='plus' class="iconPlus" id='${product.id}'></box-icon>
                         </span>
                     </div>
                     <div class="description">
@@ -77,6 +77,146 @@ function printProducts(db){
   productsHTML.innerHTML = html;
 }
 
+function handlerShowCart(){
+
+  const iconBagCartHTML = document.querySelector('.bagCart');
+  const cartHTML = document.querySelector('.cart');
+  const countCartHTML = document.querySelector('.countCart');
+  const closeCartHTML = document.querySelector('.closeCart');
+
+  closeCartHTML.addEventListener('click', function (){
+    cartHTML.classList.toggle('cart__show')
+  });
+
+  countCartHTML.addEventListener('click', function (){
+    cartHTML.classList.toggle('cart__show')
+  });
+
+  iconBagCartHTML.addEventListener('click', function (){
+    cartHTML.classList.toggle('cart__show')
+  });
+
+}
+
+function addToCartFromProducts(db){
+
+  const productsHTML = document.querySelector('.container');
+
+  productsHTML.addEventListener('click', function (e){
+
+    if(e.target.classList.contains('iconPlus')){
+
+      const id = Number(e.target.id);
+        
+      const productFind = db.products.find(
+        (product) => product.id === id
+      )
+        console.log(productFind.name);
+
+      if(db.cart[productFind.id]){
+        if( productFind.quantity === db.cart[productFind.id].amount ){
+          return alert(`${productFind.name}: fuera de stock`)
+        }
+        db.cart[productFind.id].amount++;
+      }else{
+        db.cart[productFind.id] = {...productFind, amount: 1};
+      }
+
+      window.localStorage.setItem('cart', JSON.stringify(db.cart));
+
+      printProductsInCart(db);
+    }
+
+  });
+}
+
+function printProductsInCart(db){
+
+  const cartProducts = document.querySelector('.cart__products');
+  
+  let html = ''
+
+  for (const product in db.cart) {
+    const {quantity, name, price, image, amount, id, category} = db.cart[product]
+    
+    html += `
+        <div class="cartOnProducts" >
+          <div class="card__product--img">
+              <img src="${image}" alt="imagen">
+          </div>
+          <div class="card__product--body" id="${id}">
+            <h4>${name} | $${price}</h4>
+            <p>Stock: ${quantity} </p>
+            <box-icon class="iconOnCart minus" name='minus'></box-icon>
+            <box-icon class="iconOnCart plus" name='plus'></box-icon>
+            <box-icon class="iconOnCart trash" name='trash'></box-icon>
+            <p>${amount} unit</p>
+          </div>          
+        </div>
+    `;
+  }
+
+  cartProducts.innerHTML = html;
+
+}
+
+function handlerProductsInCart(db){
+
+  const cart__productsHTML = document.querySelector('.cart__products');
+  
+  cart__productsHTML.addEventListener('click', function (e){
+
+    if(e.target.classList.contains('plus')){
+
+      const id = Number(e.target.parentElement.id);
+
+      const productFind = db.products.find(
+        (product) => product.id === id
+      )
+      //console.log(productFind.name);
+
+      if( productFind.quantity === db.cart[productFind.id].amount ){
+        return alert(`${productFind.name}: fuera de stock`)
+      }
+
+      db.cart[productFind.id].amount++;
+    }
+
+     if(e.target.classList.contains('minus')){
+
+      const id = Number(e.target.parentElement.id);
+
+      const productFind = db.products.find(
+        (product) => product.id === id
+      )
+
+      if( db.cart[productFind.id].amount === 1 ){
+        const response = confirm('¿Desea eliminar el articulo completamente?');
+        if (!response) return
+        delete db.cart[productFind.id];
+      }else{
+        db.cart[productFind.id].amount--;
+      }
+    }
+    
+    if(e.target.classList.contains('trash')){
+
+      const id = Number(e.target.parentElement.id);
+
+      const productFind = db.products.find(
+        (product) => product.id === id
+      )
+  
+      delete db.cart[productFind.id];
+    }    
+
+    window.localStorage.setItem('cart', JSON.stringify(db.cart));
+    printProductsInCart(db);
+
+  });
+
+}
+
 (async () => {
 
   const res = JSON.parse(window.localStorage.getItem('products')) || await getProducts();
@@ -84,10 +224,14 @@ function printProducts(db){
 
   const db = {
     products: res,
-    cart: {},
+    cart: JSON.parse(window.localStorage.getItem('cart')) || {},
   }
 
   printProducts(db);
- //console.log(db.products);
+  //console.log(db.products);
+  handlerShowCart();
+  addToCartFromProducts(db);
+  printProductsInCart(db);
+  handlerProductsInCart(db);
 
 })();

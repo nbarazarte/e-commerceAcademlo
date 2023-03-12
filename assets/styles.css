@@ -20,7 +20,7 @@
     --fontColorSocial: #595959;
     --fontColorFooter: #5D5967;
     --fontColorTitles: #262626;
-    --height-h:55px;
+    --height-h:70px;
     --fontSize:16px;
     --heightMediaBig:700px; /*525 700*/
     --widthBig:258px;
@@ -71,7 +71,7 @@ a {
     position: fixed;
     top: 0px;
     width: 100%;
-    height: 70px;
+    height: var(--height-h);
     z-index: 2000;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }   
@@ -81,8 +81,7 @@ a {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 70px;
-   
+    height: var(--height-h)
 }
 
 .logo_menu  {
@@ -93,7 +92,6 @@ a {
 }
 
 .logo_menu a {
-        
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -108,7 +106,7 @@ a {
     position: relative;
     left: 6px;
     bottom: -10px;
-
+    cursor: pointer;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -398,8 +396,113 @@ button.active span{
   .iconSort.active {
     fill: var(--primaryColor);
     background-color: transparent;
-
   }  
+
+
+/*** CART **/
+
+.headerCart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+
+.titleCart {
+   
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+
+
+.cart {
+    height: calc(100vh - var(--height-h));
+    width: 400px;
+    background-color: var(--secondaryColor);
+   /* background-color: #ffffff;  */
+    position: fixed;
+    top: var(--height-h);
+    right: -100%;
+    padding: 0rem;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s;
+}
+
+.cart .closeCart {
+    margin: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row-reverse; 
+}
+
+.cart__show {
+    right: 0;
+}
+
+.cartOnProducts{
+    background-color: #ffffff;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.cartOnProducts img {
+    width: 80px; 
+    height: 80px; 
+}
+
+.cartOnProducts .card__product--body {
+   /*  background-color: yellow; */
+    padding: 1rem;
+    width: 65%;
+}
+
+.cartOnProducts .card__product--body-op {
+    /* background-color: red; */
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+    width: 65%;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.cartOnProducts h4 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cart__products {
+   /*  background-color: green; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 1rem;
+    height: 90%;
+}
+
+.cart__total {
+    /* background-color: blue; */
+    height: 10%;
+}
+
+.iconOnCart {
+    background-color: #000000;
+    fill: #FFFFFF;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 0.3rem;
+    cursor: pointer;
+}
 
 
 /*** MEDIA QUERY **/
