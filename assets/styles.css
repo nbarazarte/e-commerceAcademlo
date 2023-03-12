@@ -365,11 +365,43 @@ button {
     background: transparent;
     cursor: pointer;
     font-weight: 700;
-    color: gray
+    color: gray;
+}
+
+.swal2-cancel, .btn-danger {
+    background-color: var(--butomsColor);
+    padding: 1rem;
+    margin: 1rem;
+    color:#ffffff;
+    border:0;
+    width: 100px;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: var(--primaryColor);
+    padding: 1rem;
+    margin: 1rem;
+    color:#ffffff;
+    border:0;
+    width: 100px;
+    border-style: none;
+}
+
+.swal2-confirm, .btn-success {
+    background-color: var(--primaryColor);
+    padding: 1rem;
+    margin: 1rem;
+    color:#ffffff;
+    border:0;
+    width: 100px;
 }
 
 button:hover {
     color: var(--primaryColor);
+}
+
+.btn-success:hover {
+    color:#000000;
 }
 
 button.active{  
@@ -645,7 +677,7 @@ info__amount */
         width: 80%;
     }
 
-    button {
+ /*    button {
         border: 0;
         background: transparent;
         cursor: pointer;
@@ -671,7 +703,7 @@ info__amount */
         letter-spacing: 1px;
         border-width: 0;
         font-size: 12px;
-    } 
+    }  */
 
     .container .mix{
     display: none;

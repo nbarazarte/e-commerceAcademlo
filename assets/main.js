@@ -62,14 +62,11 @@ function printProducts(db){
                 <div class="detailProducts">
                     <div class="priceStock">
                       <span class="productPrice">$${product.price}</span>
-                      
-
                         ${product.quantity ? `
                           <span class="stock">Stock: ${product.quantity}</span>
                         <span class="addToCart">
                         <box-icon name='plus' class="iconPlus" id='${product.id}'></box-icon>
                       </span>` : `<span class="stock agotado">Stock: Agotado</span>`}
-
                     </div>
                     <div class="description">
                         <p> ${product.name}</p>
@@ -121,7 +118,7 @@ function addToCartFromProducts(db){
 
       if(db.cart[productFind.id]){
         if( productFind.quantity === db.cart[productFind.id].amount ){
-          return Swal.fire(`${productFind.name}: está fuera de stock`);
+          return Swal.fire(`El artículo está fuera de stock`);
         }
         db.cart[productFind.id].amount++;
       }else{
@@ -183,10 +180,18 @@ function handlerProductsInCart(db){
       //console.log(productFind.name);
 
       if( productFind.quantity === db.cart[productFind.id].amount ){
-        return Swal.fire(`${productFind.name}: está fuera de stock`)
+
+        const cartHTML = document.querySelector('.cart');  
+        cartHTML.classList.toggle('cart__show');
+        Swal.fire(`El artículo está fuera de stock`);
+        return
       }
 
       db.cart[productFind.id].amount++;
+      window.localStorage.setItem('cart', JSON.stringify(db.cart));
+      printProductsInCart(db);
+      printTotals(db);
+      handleAmount(db);       
     }
 
      if(e.target.classList.contains('minus')){
@@ -198,11 +203,64 @@ function handlerProductsInCart(db){
       )
 
       if( db.cart[productFind.id].amount === 1 ){
-        const response = confirm('¿Desea eliminar el articulo completamente?');
-        if (!response) return
-        delete db.cart[productFind.id];
+
+
+
+
+
+
+
+
+        // const response = confirm('¿Desea eliminar el articulo completamente?');
+        // if (!response) return
+
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
+        
+        const cartHTML = document.querySelector('.cart');  
+        cartHTML.classList.toggle('cart__show')
+
+        swalWithBootstrapButtons.fire({
+          title: '¿Desea eliminar el articulo completamente?',
+          text: "Podrás volver a agregarlo si lo deseas",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Si',
+          cancelButtonText: 'No',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire(
+              'Eliminado del carrito',
+              'Puedes volver a agregarlo cuando quieras',
+              'success'
+            )
+            delete db.cart[productFind.id];
+            window.localStorage.setItem('cart', JSON.stringify(db.cart));
+            printProductsInCart(db);
+            printTotals(db);
+            handleAmount(db);            
+
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            const cartHTML = document.querySelector('.cart');  
+            cartHTML.classList.toggle('cart__show')
+          }
+        })
+
       }else{
         db.cart[productFind.id].amount--;
+        window.localStorage.setItem('cart', JSON.stringify(db.cart));
+        printProductsInCart(db);
+        printTotals(db);
+        handleAmount(db);         
       }
     }
     
@@ -213,15 +271,57 @@ function handlerProductsInCart(db){
       const productFind = db.products.find(
         (product) => product.id === id
       )
-      const response = confirm('¿Desea eliminar el articulo completamente?');
-      if (!response) return
-      delete db.cart[productFind.id];
-    }    
 
+
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+const cartHTML = document.querySelector('.cart');  
+cartHTML.classList.toggle('cart__show')
+
+swalWithBootstrapButtons.fire({
+  title: '¿Desea eliminar el articulo completamente?',
+  text: "Podrás volver a agregarlo si lo deseas",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Si',
+  cancelButtonText: 'No',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire(
+      'Eliminado del carrito',
+      'Puedes volver a agregarlo cuando quieras',
+      'success'
+    )
+    delete db.cart[productFind.id];
     window.localStorage.setItem('cart', JSON.stringify(db.cart));
     printProductsInCart(db);
     printTotals(db);
     handleAmount(db);
+
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+
+    const cartHTML = document.querySelector('.cart');  
+    cartHTML.classList.toggle('cart__show')
+
+  }
+})
+
+
+
+
+    }    
+
+
   });
 }
 
@@ -265,8 +365,8 @@ function handleTotal(db){
         text: "Sus datos estarán seguros",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: '¡Si, quiero comprar!',
-        cancelButtonText: 'No, cancelar',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No',
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
@@ -343,6 +443,7 @@ function handleAmount(db){
 
 }
 
+
 (async () => {
 
   const res = JSON.parse(window.localStorage.getItem('products')) || await getProducts();
@@ -362,5 +463,4 @@ function handleAmount(db){
   printTotals(db);
   handleTotal(db);
   handleAmount(db);
-
 })();
