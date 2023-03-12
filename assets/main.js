@@ -146,11 +146,10 @@ function printProductsInCart(db){
           </div>
           <div class="card__product--body" id="${id}">
             <h4>${name} | $${price}</h4>
-            <p>Stock: ${quantity} </p>
+            <h4>Stock: ${quantity} | ${amount} unit</h4>
             <box-icon class="iconOnCart minus" name='minus'></box-icon>
             <box-icon class="iconOnCart plus" name='plus'></box-icon>
             <box-icon class="iconOnCart trash" name='trash'></box-icon>
-            <p>${amount} unit</p>
           </div>          
         </div>
     `;

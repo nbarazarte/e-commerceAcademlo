@@ -42,7 +42,6 @@
 body {
     color: var(--color-f);
     background-color: var(--backGround);
-  
 }
 
 img{
@@ -193,7 +192,6 @@ p {
 .centerGrid{
     margin:auto;
     text-align:center;
-    
 }
 
 .cardGrid{
@@ -202,7 +200,6 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-
     width: 100%;
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
@@ -230,7 +227,7 @@ p {
 }
 
 .detailProducts {
-   padding: 1rem;
+    padding: 1rem;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
@@ -286,7 +283,6 @@ p {
 }
 
 .addToCart:hover box-icon{
-   
     fill:#FFFFFF;
     transition: 0.5s;
 }
@@ -383,7 +379,6 @@ button.active span{
     border-width: 0;
     font-size: 12px;
 } 
-  
   .container .mix{
     display: none;
   }
@@ -398,35 +393,28 @@ button.active span{
     background-color: transparent;
   }  
 
-
 /*** CART **/
 
 .headerCart {
     display: flex;
     justify-content: space-around;
     align-items: center;
-   
 }
 
 .titleCart {
-   
     width: 80%;
     text-align: center;
     font-weight: bold;
 }
 
-
-
-
-
 .cart {
     height: calc(100vh - var(--height-h));
-    width: 400px;
+    width: 300px;
     background-color: var(--secondaryColor);
    /* background-color: #ffffff;  */
     position: fixed;
     top: var(--height-h);
-    right: -100%;
+    right: -150%;
     padding: 0rem;
     display: flex;
     flex-direction: column;
@@ -459,25 +447,14 @@ button.active span{
 }
 
 .cartOnProducts .card__product--body {
-   /*  background-color: yellow; */
+    /* background-color: yellow; */
     padding: 1rem;
-    width: 65%;
-}
-
-.cartOnProducts .card__product--body-op {
-    /* background-color: red; */
-    font-size: 12px;
-    font-weight: bold;
-    color: #000000;
-    width: 65%;
-    display: flex;
-    flex-direction: row;
-    justify-content:flex-start;
-    align-items: center;
+    width: 100%;
+    height: 100px;
 }
 
 .cartOnProducts h4 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
 }
 
@@ -485,7 +462,6 @@ button.active span{
    /*  background-color: green; */
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: 1rem;
     height: 90%;
 }
 
@@ -497,13 +473,12 @@ button.active span{
 .iconOnCart {
     background-color: #000000;
     fill: #FFFFFF;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    padding: 0.3rem;
+    padding: 0.1rem;
     cursor: pointer;
 }
-
 
 /*** MEDIA QUERY **/
 
