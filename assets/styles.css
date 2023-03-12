@@ -257,6 +257,14 @@ p {
     color: var(--fontColor);
 }
 
+.agotado {
+    color: #ffffff;
+    background-color: #000000;
+    padding: 0.4rem;
+    border-radius: 6px;
+    user-select: none;
+}
+
 .description p{
     height: 40px;
     color: var(--butomsColor);
@@ -408,6 +416,7 @@ button.active span{
 }
 
 .cart {
+    /* height: calc(100vh - var(--height-h)); */
     height: calc(100vh - var(--height-h));
     width: 300px;
     background-color: var(--secondaryColor);
