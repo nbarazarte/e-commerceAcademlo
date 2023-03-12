@@ -119,7 +119,7 @@ function addToCartFromProducts(db){
 
       if(db.cart[productFind.id]){
         if( productFind.quantity === db.cart[productFind.id].amount ){
-          return alert(`${productFind.name}: fuera de stock`)
+          return Swal.fire(`${productFind.name}: está fuera de stock`);
         }
         db.cart[productFind.id].amount++;
       }else{
@@ -181,7 +181,7 @@ function handlerProductsInCart(db){
       //console.log(productFind.name);
 
       if( productFind.quantity === db.cart[productFind.id].amount ){
-        return alert(`${productFind.name}: fuera de stock`)
+        return Swal.fire(`${productFind.name}: está fuera de stock`)
       }
 
       db.cart[productFind.id].amount++;
@@ -248,45 +248,83 @@ function handleTotal(db){
   const btnBuyHTML = document.querySelector('.btn__buy');
   
     btnBuyHTML.addEventListener('click', function (e){
-      if(!Object.values(db.cart).length) return alert('Agrega algo a tu carrito');
+      if(!Object.values(db.cart).length) return Swal.fire('Primero agrega algo a tu carrito');
 
-      const response = confirm('¿Seguro que desa comprar?');
-      if (!response) return;
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: '¿Desea realizar su compra?',
+        text: "Sus datos estarán seguros",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: '¡Si, quiero comprar!',
+        cancelButtonText: 'No, cancelar',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
 
-      const currentProducts = [];
+          const currentProducts = [];
 
-      for (const product of db.products) {
+          for (const product of db.products) {
+    
+            const productsCart = db.cart[product.id];
+    
+            if(product.id === productsCart?.id){
+              currentProducts.push({
+    
+                ...product,
+                quantity: product.quantity - productsCart.amount,
+    
+              });
+            }else{
+              currentProducts.push(product);
+            }
+    
+          }
+          //console.log(currentProducts);
+          db.products = currentProducts;
+          db.cart = {};
+    
+          window.localStorage.setItem('products', JSON.stringify(db.products));
+          window.localStorage.setItem('cart', JSON.stringify(db.cart));
+          //console.log(currentProducts);
+          //console.log({product, productsCart: db.cart[product.id]?.id });
+          printTotals(db);
+          printProductsInCart(db);
+          printProducts(db);
+          
+          swalWithBootstrapButtons.fire(
+            '¡Tu compra fue exitosa!',
+            'Pronto recibiras tu factura en tu correo',
+            'success'
+          )
 
-        const productsCart = db.cart[product.id];
+          setTimeout(() => {
+            location.reload()  
+          }, 2500);
 
-        if(product.id === productsCart?.id){
-          currentProducts.push({
-
-            ...product,
-            quantity: product.quantity - productsCart.amount,
-
-          });
-        }else{
-          currentProducts.push(product);
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+          
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Su compra no sera realizada',
+            'Tu carrito seguirá a la espera',
+            'error'
+          )
         }
+      })
 
-      }
-      //console.log(currentProducts);
-      db.products = currentProducts;
-      db.cart = {};
-
-      window.localStorage.setItem('products', JSON.stringify(db.products));
-      window.localStorage.setItem('cart', JSON.stringify(db.cart));
-      //console.log(currentProducts);
-      //console.log({product, productsCart: db.cart[product.id]?.id });
-      printTotals(db);
-      printProductsInCart(db);
-      printProducts(db);
-      location.reload(); 
-
-
+      // const response = confirm('¿Seguro que desa comprar?');
+      // if (!response) return;
   });
-
 
 }
 
