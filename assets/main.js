@@ -35,6 +35,8 @@ async function getProducts(){
 
     window.localStorage.setItem('products', JSON.stringify(res));
 
+    location.reload()
+
     //console.log(res);
     return res;
 
