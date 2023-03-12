@@ -409,7 +409,7 @@ function handleTotal(db){
 
           setTimeout(() => {
             location.reload()  
-          }, 1500);
+          }, 800);
 
         } else if (
           /* Read more about handling dismissals below */
