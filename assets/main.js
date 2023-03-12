@@ -204,13 +204,6 @@ function handlerProductsInCart(db){
 
       if( db.cart[productFind.id].amount === 1 ){
 
-
-
-
-
-
-
-
         // const response = confirm('¿Desea eliminar el articulo completamente?');
         // if (!response) return
 
@@ -360,6 +353,9 @@ function handleTotal(db){
         buttonsStyling: false
       })
       
+      const cartHTML = document.querySelector('.cart');  
+      cartHTML.classList.toggle('cart__show')
+
       swalWithBootstrapButtons.fire({
         title: '¿Desea realizar su compra?',
         text: "Sus datos estarán seguros",
@@ -416,13 +412,20 @@ function handleTotal(db){
           result.dismiss === Swal.DismissReason.cancel
           
         ) {
-          swalWithBootstrapButtons.fire(
+          
+/*           swalWithBootstrapButtons.fire(
             'Su compra no sera realizada',
             'Tu carrito seguirá a la espera',
             'error'
-          )
+          ) */
+
+          const cartHTML = document.querySelector('.cart');  
+          cartHTML.classList.toggle('cart__show')
+
         }
       })
+
+      
 
       // const response = confirm('¿Seguro que desa comprar?');
       // if (!response) return;
