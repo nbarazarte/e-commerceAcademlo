@@ -205,7 +205,8 @@ function handlerProductsInCart(db){
       const productFind = db.products.find(
         (product) => product.id === id
       )
-  
+      const response = confirm('¿Desea eliminar el articulo completamente?');
+      if (!response) return
       delete db.cart[productFind.id];
     }    
 
