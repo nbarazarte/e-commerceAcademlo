@@ -543,6 +543,7 @@ button.active span{
     display: flex;
     flex-direction: column;
     transition: right 0.3s;
+    padding-bottom: 1rem;
 }
 
 .cart .closeCart {
