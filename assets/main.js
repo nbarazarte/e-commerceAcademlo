@@ -476,4 +476,15 @@ function handlerShowMobileMenu(){
   handleTotal(db);
   handleAmount(db);
   handlerShowMobileMenu();
+
+  window.onscroll = function() {
+    let y = window.scrollY;
+    //console.log(y);
+    if (y === 0){
+      document.getElementById('goToHomeIcon').style.visibility = 'hidden';
+    }else{
+      document.getElementById('goToHomeIcon').style.visibility = 'visible';
+    }
+  };
+
 })();
