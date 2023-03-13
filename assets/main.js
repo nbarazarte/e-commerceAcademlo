@@ -592,6 +592,7 @@ function handlerCloseMenuMobile(){
   printProductsInModal(db);
   handlerCloseMenuMobile();
 
+  document.getElementById('goToHomeIcon').style.visibility = 'hidden';
   document.getElementById('headerStore').style.backgroundColor = 'transparent';
   document.getElementById('headerStore').style.boxShadow= 'none';
   window.onscroll = function() {
