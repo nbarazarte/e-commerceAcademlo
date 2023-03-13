@@ -320,7 +320,7 @@ p {
     width: 45px;
     height: 45px;
     position: relative;
-    bottom: 45px;
+    bottom: 35px;
     left: 50px;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
     cursor: pointer;
