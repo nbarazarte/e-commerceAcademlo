@@ -64,9 +64,11 @@ function printProducts(db){
                       <span class="productPrice">$${product.price}</span>
                         ${product.quantity ? `
                           <span class="stock">Stock: ${product.quantity}</span>
+                          <box-icon type='solid' class='showMore' id='${product.id}' name='show'></box-icon>
                         <span class="addToCart">
                         <box-icon name='plus' class="iconPlus" id='${product.id}'></box-icon>
-                      </span>` : `<span class="stock agotado">Stock: Agotado</span>`}
+                      </span>` : `<span class="stock agotado">Stock: Agotado</span>
+                      <box-icon type='solid' class='showMore' id='${product.id}' name='show'></box-icon>`}
                     </div>
                     <div class="description">
                         <p> ${product.name}</p>
@@ -456,6 +458,109 @@ function handlerShowMobileMenu(){
   });
 }
 
+function printProductsInModal(db){
+
+  const productsHTML = document.querySelector('.container');
+
+  productsHTML.addEventListener('click', function (e){
+
+    if(e.target.classList.contains('showMore')){
+
+      const id = Number(e.target.id);
+
+      //console.log(id);
+
+      const productFind = db.products.find(
+        (product) => product.id === id
+      )
+        //console.log(productFind);
+
+       Swal.fire({
+        title: '<strong>Academlo Store</strong>',
+        icon: '',
+        html:`<div class="cardProd mix ${productFind.category}" data-myorder="">
+        <div class="imgProducts">
+            <img src="${productFind.image}" alt="">
+        </div>
+        <div class="detailProducts">
+            <div class="priceStock">
+              <span class="productPrice">$${productFind.price}</span>
+                ${productFind.quantity ? `
+                  <span class="stock">Stock: ${productFind.quantity}</span>
+                  
+                <span class="addToCartModal">
+                <box-icon name='plus' onclick='addToCartFromModal(this.id)' class="iconPlus" id='${productFind.id}'></box-icon>
+              </span>` : `<span class="stock agotado">Stock: Agotado</span>`}
+            </div>
+            <div class="description">
+                <p> ${productFind.name}</p>
+            </div>
+        </div>
+    </div>`,
+        showCloseButton: true,
+        showCancelButton: false,
+        showConfirmButton:false,
+        focusConfirm: false,
+        confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText:
+          '<i class="fa fa-thumbs-down"></i>',
+        cancelButtonAriaLabel: 'Thumbs down'
+      })
+
+
+    }
+
+  });
+
+
+
+}
+
+function addToCartFromModal(idModal){
+  
+  const res = JSON.parse(window.localStorage.getItem('products'));
+
+  const db = {
+    products: res,
+    cart: JSON.parse(window.localStorage.getItem('cart')),
+  }
+
+  const id = Number(idModal);
+   const productFind = db.products.find(
+    (product) => product.id === id
+  )
+    //console.log(productFind.name);
+
+  if(db.cart[productFind.id]){
+    if( productFind.quantity === db.cart[productFind.id].amount ){
+      return Swal.fire(`El artículo está fuera de stock`);
+    }
+    db.cart[productFind.id].amount++;
+  }else{
+    db.cart[productFind.id] = {...productFind, amount: 1};
+  }
+
+  window.localStorage.setItem('cart', JSON.stringify(db.cart));
+
+  printProductsInCart(db);
+  printTotals(db);
+  handleAmount(db);
+
+}
+
+function handlerCloseMenuMobile(){
+
+  const iconClosetHTML = document.querySelector('.iconClose');
+  const menuMobileOptionsHTML = document.querySelector('.menuMobileOptions');
+
+  iconClosetHTML.addEventListener('click', function (){
+    menuMobileOptionsHTML.classList.toggle('menu__show')
+  });
+
+}
+
 (async () => {
 
   const res = JSON.parse(window.localStorage.getItem('products')) || await getProducts();
@@ -476,14 +581,22 @@ function handlerShowMobileMenu(){
   handleTotal(db);
   handleAmount(db);
   handlerShowMobileMenu();
+  printProductsInModal(db);
+  handlerCloseMenuMobile();
 
   window.onscroll = function() {
     let y = window.scrollY;
     //console.log(y);
     if (y === 0){
       document.getElementById('goToHomeIcon').style.visibility = 'hidden';
+      document.getElementById('headerStore').style.backgroundColor = 'transparent';
+      document.getElementById('headerStore').style.boxShadow= 'none';
+  
     }else{
       document.getElementById('goToHomeIcon').style.visibility = 'visible';
+      document.getElementById('headerStore').style.backgroundColor = '#ffffff';
+      document.getElementById('headerStore').style.boxShadow = '0 .5rem 1rem rgba(0,0,0,.15)';
+      
     }
   };
 

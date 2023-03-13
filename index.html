@@ -24,7 +24,7 @@
 </head>
 <body>
 
-    <div class="header">
+    <div id='headerStore' class="header">
         <nav class="menuNavBar">
             <div class="logo_menu">
 
@@ -106,6 +106,12 @@
 
         <div class="menuMobileOptions">
 
+            <div class="headerMenuMobile">
+                <div class="closeMenu">
+                    <box-icon type='solid' class="iconClose" name='x-circle'></box-icon>
+                </div>
+            </div>
+
             <a href="#home">
                 <box-icon type='solid' name='home'></box-icon>
                 Home
@@ -120,7 +126,6 @@
 
         <span id='goToHomeIcon' class="goToHome">
             <a href="#home">
-                
                 <box-icon name='chevrons-up' class="iconHome"></box-icon>
             </a>            
         </span>
