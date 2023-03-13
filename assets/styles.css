@@ -100,6 +100,7 @@ a {
     z-index: 2000;
     /* box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; */
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    transition: background-color 0.6s;
 }   
 
 .menuNavBar {
@@ -531,12 +532,12 @@ button.active span{
 
 .cart {
     /* height: calc(100vh - var(--height-h)); */
-    height: calc(100vh - var(--height-h));
+    height: 100vh;/* calc(100vh - var(--height-h)); */
     width: 300px;
     background-color: var(--secondaryColor);
    /* background-color: #ffffff;  */
     position: fixed;
-    top: var(--height-h);
+    top: 0px;
     right: -150%;
     padding: 0rem;
     display: flex;

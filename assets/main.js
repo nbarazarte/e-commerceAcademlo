@@ -597,7 +597,7 @@ function handlerCloseMenuMobile(){
   document.getElementById('headerStore').style.boxShadow= 'none';
   window.onscroll = function() {
     let y = window.scrollY;
-    //console.log(y);
+    console.log(y);
     if (y === 0){
       document.getElementById('goToHomeIcon').style.visibility = 'hidden';
       document.getElementById('headerStore').style.backgroundColor = 'transparent';
