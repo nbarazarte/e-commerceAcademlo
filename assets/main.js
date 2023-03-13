@@ -175,12 +175,12 @@ function handlerProductsInCart(db){
     if(e.target.classList.contains('plus')){
 
       const id = Number(e.target.parentElement.id);
-
+      
       const productFind = db.products.find(
         (product) => product.id === id
       )
       //console.log(productFind.name);
-
+      
       if( productFind.quantity === db.cart[productFind.id].amount ){
 
         const cartHTML = document.querySelector('.cart');  
@@ -318,6 +318,7 @@ swalWithBootstrapButtons.fire({
 
 
   });
+
 }
 
 function printTotals(db) {
@@ -346,14 +347,12 @@ function handleTotal(db){
   
     btnBuyHTML.addEventListener('click', function (e){
       if(!Object.values(db.cart).length) {
-
+console.log('boton')
         const cartHTML = document.querySelector('.cart');  
         cartHTML.classList.toggle('cart__show')
         Swal.fire('Primero agrega algo a tu carrito');
         return
       }
-      
-      
 
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -482,7 +481,7 @@ function printProductsInModal(db){
         (product) => product.id === id
       )
         //console.log(productFind);
-
+        
        Swal.fire({
         title: '<strong>Academlo Store</strong>',
         icon: '',
@@ -527,7 +526,7 @@ function printProductsInModal(db){
 }
 
 function addToCartFromModal(idModal){
-  
+  //console.log(idModal)
   const res = JSON.parse(window.localStorage.getItem('products'));
 
   const db = {
@@ -539,7 +538,7 @@ function addToCartFromModal(idModal){
    const productFind = db.products.find(
     (product) => product.id === id
   )
-    //console.log(productFind.name);
+    console.log(productFind.name);
 
   if(db.cart[productFind.id]){
     if( productFind.quantity === db.cart[productFind.id].amount ){
@@ -555,6 +554,9 @@ function addToCartFromModal(idModal){
   printProductsInCart(db);
   printTotals(db);
   handleAmount(db);
+  
+  handlerProductsInCart(db)
+  handleTotal(db);
 
 }
 
@@ -597,7 +599,7 @@ function handlerCloseMenuMobile(){
   document.getElementById('headerStore').style.boxShadow= 'none';
   window.onscroll = function() {
     let y = window.scrollY;
-    console.log(y);
+    //console.log(y);
     if (y === 0){
       document.getElementById('goToHomeIcon').style.visibility = 'hidden';
       document.getElementById('headerStore').style.backgroundColor = 'transparent';
