@@ -446,6 +446,15 @@ function handleAmount(db){
 
 }
 
+function handlerShowMobileMenu(){
+
+  const menuMobileHTML = document.querySelector('.menuMobile');
+  const menuMobileOptionsHTML = document.querySelector('.menuMobileOptions');
+
+  menuMobileHTML.addEventListener('click', function (){
+    menuMobileOptionsHTML.classList.toggle('menu__show')
+  });
+}
 
 (async () => {
 
@@ -466,4 +475,5 @@ function handleAmount(db){
   printTotals(db);
   handleTotal(db);
   handleAmount(db);
+  handlerShowMobileMenu();
 })();
