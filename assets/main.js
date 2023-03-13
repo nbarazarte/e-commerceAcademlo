@@ -345,7 +345,15 @@ function handleTotal(db){
   const btnBuyHTML = document.querySelector('.btn__buy');
   
     btnBuyHTML.addEventListener('click', function (e){
-      if(!Object.values(db.cart).length) return Swal.fire('Primero agrega algo a tu carrito');
+      if(!Object.values(db.cart).length) {
+
+        const cartHTML = document.querySelector('.cart');  
+        cartHTML.classList.toggle('cart__show')
+        Swal.fire('Primero agrega algo a tu carrito');
+        return
+      }
+      
+      
 
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -584,6 +592,8 @@ function handlerCloseMenuMobile(){
   printProductsInModal(db);
   handlerCloseMenuMobile();
 
+  document.getElementById('headerStore').style.backgroundColor = 'transparent';
+  document.getElementById('headerStore').style.boxShadow= 'none';
   window.onscroll = function() {
     let y = window.scrollY;
     //console.log(y);
