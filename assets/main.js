@@ -592,7 +592,7 @@ function handlerCloseMenuMobile(){
   handlerShowMobileMenu();
   printProductsInModal(db);
   handlerCloseMenuMobile();
-  addToCartFromModal(db);
+  //addToCartFromModal(db);
 
   document.getElementById('goToHomeIcon').style.visibility = 'hidden';
   document.getElementById('headerStore').style.backgroundColor = 'transparent';
