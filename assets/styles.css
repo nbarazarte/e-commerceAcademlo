@@ -38,7 +38,24 @@
    font-size: var(--fontSize);
    color: var(--fontColorTitles);
    scroll-behavior: smooth;
+
+   scrollbar-width: thin;
+   scrollbar-color: var(--primaryColor) var(--backGround);
 }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: var(--backGround);
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--primaryColor);
+    border-radius: 20px;
+    border: 0px solid var(--backGround);
+  }
 
 body {
     color: var(--color-f);
