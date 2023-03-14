@@ -692,7 +692,8 @@ button.active span{
     }
 
     .menuMobile {
-        visibility: hidden;
+        /* visibility: hidden; */
+        display: none;
     }
 
     .menu ul a{
