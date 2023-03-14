@@ -112,7 +112,7 @@ function addToCartFromProducts(db){
     if(e.target.classList.contains('iconPlus')){
 
       const id = Number(e.target.id);
-        
+      console.log(id)
       const productFind = db.products.find(
         (product) => product.id === id
       )
@@ -196,7 +196,7 @@ function handlerProductsInCart(db){
       handleAmount(db);       
     }
 
-     if(e.target.classList.contains('minus')){
+    if(e.target.classList.contains('minus')){
 
       const id = Number(e.target.parentElement.id);
 
@@ -347,7 +347,7 @@ function handleTotal(db){
   
     btnBuyHTML.addEventListener('click', function (e){
       if(!Object.values(db.cart).length) {
-console.log('boton')
+
         const cartHTML = document.querySelector('.cart');  
         cartHTML.classList.toggle('cart__show')
         Swal.fire('Primero agrega algo a tu carrito');
@@ -496,7 +496,7 @@ function printProductsInModal(db){
                   <span class="stock">Stock: ${productFind.quantity}</span>
                   
                 <span class="addToCartModal">
-                <box-icon name='plus' onclick='addToCartFromModal(this.id)' class="iconPlus" id='${productFind.id}'></box-icon>
+                <box-icon name='plus' class="iconPlus" id='${productFind.id}'></box-icon>
               </span>` : `<span class="stock agotado">Stock: Agotado</span>`}
             </div>
             <div class="description">
@@ -516,47 +516,46 @@ function printProductsInModal(db){
         cancelButtonAriaLabel: 'Thumbs down'
       })
 
-
+      addToCartFromModal(db);
     }
 
   });
 
 
-
 }
 
-function addToCartFromModal(idModal){
-  //console.log(idModal)
-  const res = JSON.parse(window.localStorage.getItem('products'));
+function addToCartFromModal(db){
+ 
+  const productsHTML = document.querySelector('.addToCartModal');
 
-  const db = {
-    products: res,
-    cart: JSON.parse(window.localStorage.getItem('cart')),
-  }
+  productsHTML.addEventListener('click', function (e){
 
-  const id = Number(idModal);
-   const productFind = db.products.find(
-    (product) => product.id === id
-  )
-    console.log(productFind.name);
+    if(e.target.classList.contains('iconPlus')){
 
-  if(db.cart[productFind.id]){
-    if( productFind.quantity === db.cart[productFind.id].amount ){
-      return Swal.fire(`El artículo está fuera de stock`);
+      const id = Number(e.target.id);
+      console.log(id)
+      const productFind = db.products.find(
+        (product) => product.id === id
+      )
+        console.log(productFind.name);
+
+      if(db.cart[productFind.id]){
+        if( productFind.quantity === db.cart[productFind.id].amount ){
+          return Swal.fire(`El artículo está fuera de stock`);
+        }
+        db.cart[productFind.id].amount++;
+      }else{
+        db.cart[productFind.id] = {...productFind, amount: 1};
+      }
+
+      window.localStorage.setItem('cart', JSON.stringify(db.cart));
+
+      printProductsInCart(db);
+      printTotals(db);
+      handleAmount(db);
     }
-    db.cart[productFind.id].amount++;
-  }else{
-    db.cart[productFind.id] = {...productFind, amount: 1};
-  }
 
-  window.localStorage.setItem('cart', JSON.stringify(db.cart));
-
-  printProductsInCart(db);
-  printTotals(db);
-  handleAmount(db);
-  
-  handlerProductsInCart(db)
-  handleTotal(db);
+  });
 
 }
 
@@ -593,6 +592,7 @@ function handlerCloseMenuMobile(){
   handlerShowMobileMenu();
   printProductsInModal(db);
   handlerCloseMenuMobile();
+  addToCartFromModal(db);
 
   document.getElementById('goToHomeIcon').style.visibility = 'hidden';
   document.getElementById('headerStore').style.backgroundColor = 'transparent';
