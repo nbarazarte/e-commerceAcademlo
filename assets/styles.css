@@ -660,7 +660,7 @@ button.active span{
 .menuMobileOptions {
     /* height: calc(100vh - var(--height-h)); */
     height: 100vh;
-    width: 300px;
+    width: 100vw;
     background-color: #ffffff; 
     position: fixed;
     top: 0px;
